@@ -1,5 +1,7 @@
 <?php
     /*
+     *  NOTE: PLEASE CONSULT THE MANUAL/WIKI BEFORE USING OR CONFIGURING THIS APPLICATION.
+     *  ---------------------------------------------------------------------------------
      *  Cynide v1.0 - https://github.com/jrsarath/cynide
      *  A php class to disable, destroy, backup a php application remotely
      *  Copyright © 2019, JR Sarath - Noobs Labs
@@ -7,22 +9,39 @@
      */
     class Cynide {
         // REQUIRED CONFIGS
-        public $backend = '';   // DOMAIN OR IP ADDRESS
+        public $backend = '';   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
         public $app_id = '';    // APPLICATION ID
+        public $app_core = '';  // ABSOLUTE PATH TO APPLICATION CORE FILE
         // OPTIONAL CONFIGS
         public $debug = true;   // DEBUGGING, OPTIONS: TRUE/FALSE
+
         public function __construct() {
 
         }
         function fetch_response() {
+            $query = $this->backend.''
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             // curl_setopt($ch, CURLOPT_HEADER, 1);
-            curl_setopt($ch, CURLOPT_URL, $domain);
+            curl_setopt($ch, CURLOPT_URL, $query);
             $result = curl_exec($ch);
             $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
             $status = json_decode($result);
+        }
+
+        // DISABLE APPLICATION & SHOWS AN ERROR PAGE
+        function disable_application() {
+
+        }
+
+        // DELETES SPECIFIED
+        function destory_application() {
+
+        }
+
+        function erase_application() {
+
         }
     }
     function init_application(){
