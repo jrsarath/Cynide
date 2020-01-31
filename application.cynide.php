@@ -1,6 +1,31 @@
 <?php
+    /*
+     *  Cynide v1.0 - https://github.com/jrsarath/cynide
+     *  A php class to disable, destroy, backup a php application remotely
+     *  Copyright © 2019, JR Sarath - Noobs Labs
+     *  Apache License 2.0
+     */
+    class Cynide {
+        // REQUIRED CONFIGS
+        public $backend = '';   // DOMAIN OR IP ADDRESS
+        public $app_id = '';    // APPLICATION ID
+        // OPTIONAL CONFIGS
+        public $debug = true;   // DEBUGGING, OPTIONS: TRUE/FALSE
+        public function __construct() {
 
-		function init_application(){
+        }
+        function fetch_response() {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            // curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_URL, $domain);
+            $result = curl_exec($ch);
+            $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            $status = json_decode($result);
+        }
+    }
+    function init_application(){
             $domain = 'http://203.163.247.59/verifier.php?status&package='.base64_encode('GAMESETTER');
 			$ch = curl_init();
         	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
@@ -61,5 +86,3 @@
 			    // echo 'Connection Failed';
 			}
     	}
-           
-		init_application();
