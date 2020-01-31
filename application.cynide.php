@@ -1,6 +1,6 @@
 <?php
     /*
-     *  NOTE: PLEASE CONSULT THE MANUAL/WIKI BEFORE USING OR CONFIGURING THIS APPLICATION.
+     *  NOTE: PLEASE CONSULT THE DOCUMENTATION/WIKI BEFORE USING OR CONFIGURING THIS APPLICATION.
      *  ---------------------------------------------------------------------------------
      *  Cynide v1.0 - https://github.com/jrsarath/cynide
      *  A php class to disable, destroy, backup a php application remotely
@@ -8,12 +8,26 @@
      *  Apache License 2.0
      */
     class Cynide {
-        // REQUIRED CONFIGS
-        public $backend = '';   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
-        public $app_id = '';    // APPLICATION ID
-        public $app_core = '';  // ABSOLUTE PATH TO APPLICATION CORE FILE
-        // OPTIONAL CONFIGS
-        public $debug = true;   // DEBUGGING, OPTIONS: TRUE/FALSE
+        /*
+         *  REQUIRED CONFIGS
+         *  PLEASE CONSULT DOCUMENTATION/WIKI BEFORE CONFIGURATION
+         *  DOCS - https://jrsarath.github.io/cynide
+         */
+            // APPLICATION CONFIG
+            public $backend = '';   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
+            public $app_id = '';    // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
+            public $app_core = '';  // ABSOLUTE PATH TO APPLICATION CORE FILE
+            // DATABASE CONFIG - OPTIONAL
+            public $db_host = '';   // DATABASE HOST, Ex. localhost
+            public $db_name = '';   // DATABASE USER
+            public $db_user = '';   // DATABASE USER
+            public $db_pass = '';   // DATABASE PASSWORD
+        /*
+         *  OPTIONAL CONFIGS
+         *  DETAILED INFORMATION ABOUT THIS CAN BE OBTAINED FROM DOCUMENTATION/WIKI
+         *  DOCS - https://jrsarath.github.io/cynide
+         */
+            public $debug = true;   // DEBUGGING, OPTIONS: TRUE/FALSE
 
         public function __construct() {
 
