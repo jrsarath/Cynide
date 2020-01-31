@@ -19,15 +19,19 @@
 
         }
         function fetch_response() {
-            $query = $this->backend.''
+            $query = $this->backend.'?fetch-status&app-id='.base64_encode($this->app_id);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             // curl_setopt($ch, CURLOPT_HEADER, 1);
             curl_setopt($ch, CURLOPT_URL, $query);
             $result = curl_exec($ch);
-            $http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
-            $status = json_decode($result);
+            if ($http_code == '200') {
+                return $status = json_decode($result);
+            } else {
+                return false;
+            }
         }
 
         // DISABLE APPLICATION & SHOWS AN ERROR PAGE
