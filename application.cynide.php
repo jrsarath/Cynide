@@ -18,7 +18,7 @@
             public $app_id = '';    // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
             public $app_core = '';  // ABSOLUTE PATH TO APPLICATION CORE FILE
             // DATABASE CONFIG - OPTIONAL
-            public $db_host = '';   // DATABASE HOST, Ex. localhost
+            public $db_host = 'localhost';   // DATABASE HOST, Ex. localhost
             public $db_name = '';   // DATABASE USER
             public $db_user = '';   // DATABASE USER
             public $db_pass = '';   // DATABASE PASSWORD
@@ -29,6 +29,7 @@
             if ($db = mysqli_connect($db_host, $db_user, $db_pass, $db_name)) {
                 $this->database = $db;
             } else {
+                echo(mysqli_connect_error());
                 $this->write_log('ERROR', '[SQL ERROR] - '.mysqli_connect_error());
             }
         }
