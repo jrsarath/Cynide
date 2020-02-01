@@ -8,6 +8,8 @@ Work in progress - Please check back in while for updates, Cheers!!
 3. **Destroy Application**, In-case developer needs destroy/delete certain file inside application, including cynide.
 4. **Erase**, In-case developer needs to erase/delete all application data including database. this function will also transfer a shadow-copy of the main application along with database to configured server (optional).
 
+Other feature ideas, or improvement ideas are most welcome, please feel free to leave them **[here](https://github.com/jrsarath/Cynide/issues/new)** section along with correct tag.
+
 ### Disclaimer
 Cynide neither was developed for malicious usage or was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
 
