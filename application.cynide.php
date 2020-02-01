@@ -14,27 +14,27 @@
          *  DOCS - https://jrsarath.github.io/cynide
          */
             // APPLICATION CONFIGS
-            public $backend = '';   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
-            public $app_id = '';    // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
-            public $app_core = '';  // ABSOLUTE PATH TO APPLICATION CORE FILE
+            public $backend = 'http://localhost:8080/server.cynide.php';                   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
+            public $app_id = 'cynide';                    // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
+            public $app_core = '';                  // ABSOLUTE PATH TO APPLICATION CORE FILE
             // DATABASE CONFIG - OPTIONAL
-            public $db_host = 'localhost';   // DATABASE HOST, Ex. localhost
-            public $db_name = '';   // DATABASE USER
-            public $db_user = '';   // DATABASE USER
-            public $db_pass = '';   // DATABASE PASSWORD
+            public $db_host = 'localhost';          // DATABASE HOST, Ex. localhost
+            public $db_name = 'aio';                // DATABASE NAME
+            public $db_user = 'global';             // DATABASE USER
+            public $db_pass = 'global';             // DATABASE PASSWORD
             // OTHER CONFIGS - OPTIONAL
-            public $debug = true;   // DEBUGGING, OPTIONS: TRUE/FALSE
+            public $debug = true;                   // DEBUGGING, OPTIONS: TRUE/FALSE
 
         public function __construct() {
-            if ($db = mysqli_connect($db_host, $db_user, $db_pass, $db_name)) {
+            if ($db = mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name)) {
                 $this->database = $db;
             } else {
-                echo(mysqli_connect_error());
                 $this->write_log('ERROR', '[SQL ERROR] - '.mysqli_connect_error());
             }
         }
 
         function init() {
+            mysqli_query('')
             $query = $this->backend.'?fetch-status&app-id='.base64_encode($this->app_id);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -64,7 +64,7 @@
 
         }
         function write_log($type, $msg) {
-            $this->debug && error_log(`Cynide [${$type}]: ${$msg}`);
+            $this->debug && error_log('['.$type.'] Cynide : '.$msg);
         }
     }
     function init_application(){
