@@ -13,12 +13,17 @@ Other feature ideas, or improvement ideas are most welcome, please feel free to 
 1. A webserver with php support, shared hostings works as-well.
 2. Little bit of php knowledge, if you feel unsure about any config/settings feel free to ask [here](https://github.com/jrsarath/Cynide/issues/new) with tag ***help wanted*** 
 ### Instructions
-1.  Include Cynide library where you want to initiate Cynide
+1.  Download Cynide, and upload cynide.php inside ur application, server.cynide.php to your own server/website
+
+2.  Include Cynide library where you want to initiate Cynide
     ```php
         require('path-to-cynide/cynide.php');
     ```
-2.  Be creative, Cynide is self executable, just initiate it once, call initiation inside your main application or anywhere else.
-    ````
+3.  Be creative, Cynide is self executable, just initiate it once, call initiation inside your main application or anywhere else.
+    ```php
+        $cynide = new Cynide();
+    ```
+    thats it. cynide is now initiated and will work as configured. Now you also can manually call Cynide's functions using cynide class, Ex. ```$cynide=>validate_license```
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 
