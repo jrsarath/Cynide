@@ -13,7 +13,7 @@
          *  PLEASE CONSULT DOCUMENTATION/WIKI BEFORE CONFIGURATION
          *  DOCS - https://jrsarath.github.io/cynide
          */
-            // APPLICATION CONFIG
+            // APPLICATION CONFIGS
             public $backend = '';   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
             public $app_id = '';    // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
             public $app_core = '';  // ABSOLUTE PATH TO APPLICATION CORE FILE
@@ -22,17 +22,18 @@
             public $db_name = '';   // DATABASE USER
             public $db_user = '';   // DATABASE USER
             public $db_pass = '';   // DATABASE PASSWORD
-        /*
-         *  OPTIONAL CONFIGS
-         *  DETAILED INFORMATION ABOUT THIS CAN BE OBTAINED FROM DOCUMENTATION/WIKI
-         *  DOCS - https://jrsarath.github.io/cynide
-         */
+            // OTHER CONFIGS - OPTIONAL
             public $debug = true;   // DEBUGGING, OPTIONS: TRUE/FALSE
 
         public function __construct() {
-
+            if ($db = mysqli_connect($db_host, $db_user, $db_pass, $db_name)) {
+                $this->database = $db;
+            } else {
+                $this->write_log('ERROR', '[SQL ERROR] - '.mysqli_connect_error());
+            }
         }
-        function fetch_response() {
+
+        function init() {
             $query = $this->backend.'?fetch-status&app-id='.base64_encode($this->app_id);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -60,6 +61,9 @@
 
         function erase_application() {
 
+        }
+        function write_log($type, $msg) {
+            $this->debug && error_log(`Cynide [${$type}]: ${$msg}`);
         }
     }
     function init_application(){
