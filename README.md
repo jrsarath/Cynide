@@ -30,18 +30,28 @@ Cynide's configurations are fairly simple and easy. still ig you get stuck somew
 
 If you take a look into cynide.php you'll see some configurations to be configured, below you can find each configs description, purpose, example value. cynide.php also has a little helping text above each configs to help you along.
 
-```php
-    public $backend = '';
-    // **REQUIRED CONFIG**
-    // Here you have to define your backend's website address or ip address// 
-    // with http:// or https:// where cynides server file is located
-    // Ex. http://jrsarath.me/cynide/ or http://192.168.1.50/
-```
+1. ***$backend***
+    ```php
+        // REQUIRED CONFIG
+        // Here you have to define your backend's website address or ip address
+        // with http:// or https:// where cynides server file is located
+        // Ex. http://jrsarath.me/cynide/ or http://192.168.1.50/
+        public $backend = '';
+    ```
+2.  ***$app_id***
+    ```php
+        // REQUIRED CONFIG
+        // Here you have to define your application id which will identify and// 
+        // verify this application with cynide server end. Remember to give each// 
+        // application installation a unique application id
+        // Ex. 'CRM-563' or
+        public $app_id = '';
+    ```
 
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 
-It would be great to get an cup of coffee in return :heart: if you found this project useful please consider donating a small amount [here](https://www.instamojo.com/@jrsarath), thanks
+It would be great to get an cup of coffee :coffee: in return, if you found this project useful please consider donating a small amount [here](https://www.instamojo.com/@jrsarath), thanks
 ### Disclaimer
 Cynide neither was developed for malicious usage or was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
 
