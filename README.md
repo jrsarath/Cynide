@@ -90,7 +90,7 @@ Cynide's api usage and description
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 
-It would be great to get an cup of coffee :coffee: in return, if you found this project useful please consider donating a small amount [here](https://www.instamojo.com/@jrsarath), I'll be great-full to each and every donor and will mention them here as **Project Supporter**. Thanks
+It would be great to get an cup of coffee :coffee: in return, if you found this project useful please consider donating a small amount [here](https://www.instamojo.com/@jrsarath), Each and every donor will be appreciated and mentioned as **Project Supporter**. Thanks
 ### Supporters
 In Progress
 ### Disclaimer
