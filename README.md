@@ -12,6 +12,13 @@ Other feature ideas, or improvement ideas are most welcome, please feel free to 
 ### Requirements
 1. A webserver with php support, shared hostings works as-well.
 2. Little bit of php knowledge, if you feel unsure about any config/settings feel free to ask [here](https://github.com/jrsarath/Cynide/issues/new) with tag ***help wanted*** 
+### Instructions
+1.  Include Cynide library where you want to initiate Cynide
+    ```php
+        require('path-to-cynide/cynide.php');
+    ```
+2.  Be creative, Cynide is self executable, just initiate it once, call initiation inside your main application or anywhere else.
+    ````
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 
