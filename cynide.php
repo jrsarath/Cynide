@@ -17,7 +17,7 @@
             // APPLICATION CONFIGS
             // --------------------------------------
             // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
-            public $backend = 'http://localhost:8080/server.cynide.php';
+            public $backend = 'http://localhost:8080/';
             // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
             public $app_id = 'cynide';
             // ABSOLUTE PATH TO APPLICATION CORE FILE
@@ -51,9 +51,7 @@
 
         // VALIDATION FUNCTIONS
         function validate_authenticity() {
-            $q = mysqli_fetch_assoc(mysqli_query($this->database,"SELECT * FROM options WHERE option_id='3'"));
-            echo($q['option_name']);
-            $query = $this->backend.'?fetch-status&app-id='.base64_encode($this->app_id);
+            $query = $this->backend.'server.cynide.php?fetch-status&app-id='.base64_encode($this->app_id);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             // curl_setopt($ch, CURLOPT_HEADER, 1);

@@ -32,7 +32,10 @@ If you take a look into cynide.php you'll see some configurations to be configur
 
 ```php
     public $backend = '';
-    // Here you have to define your backend's website address or ip address
+    // **REQUIRED CONFIG**
+    // Here you have to define your backend's website address or ip address// 
+    // with http:// or https:// where cynides server file is located
+    // Ex. http://jrsarath.me/cynide/ or http://192.168.1.50/
 ```
 
 ### Support
