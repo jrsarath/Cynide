@@ -41,12 +41,40 @@ If you take a look into cynide.php you'll see some configurations to be configur
 2.  ***$app_id***
     ```php
         // REQUIRED CONFIG
-        // Here you have to define your application id which will identify and// 
-        // verify this application with cynide server end. Remember to give each// 
+        // Here you have to define your application id which will identify and 
+        // verify this application with cynide server end. Remember to give each 
         // application installation a unique application id
-        // Ex. 'CRM-563' or
+        // Ex. 'CRM-563' or 'HTM-50'
         public $app_id = '';
     ```
+3.  ***$app_core***
+    ```php
+        // REQUIRED CONFIG
+        // Here you have to define absolute path to an important core/functions.php file// 
+        // of your application which you want to get deleted when you call Cynide's remote destroy function
+        // Ex. '/home/jrsarath/public_html/management/application/application.php' or 'application.php'
+        public $app_core = '';        
+    ```
+4.  ***Database Configs***
+    ```php
+        // Define your database server's domain or ip address
+        // Ex. 'localhost'
+        // Default value: 'localhost'
+        public $db_host = '';
+    
+        // Define your database's name
+        // Ex. 'jrs_manage'
+        public $db_name = '';
+        
+        // Define your database's username
+        // Ex. 'dbuser_152'
+        public $db_user = '';
+        
+        // Define your database's password
+        // Ex. '856s7aXAsd'
+        public $db_pass = '';
+    ```
+
 
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
