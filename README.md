@@ -95,6 +95,6 @@ It would be great to get an cup of coffee :coffee: in return, if you found this 
 ### Supporters
 In Progress
 ### Disclaimer
-Cynide neither was developed for malicious usage or was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
+Cynide neither was developed for malicious usage or neither was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
 
 Made with :heart: in Kolkata
