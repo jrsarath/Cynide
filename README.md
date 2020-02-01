@@ -97,4 +97,5 @@ In Progress
 ### Disclaimer
 Cynide neither was developed for malicious usage or neither was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
 
+---
 Made with :heart: in Kolkata
