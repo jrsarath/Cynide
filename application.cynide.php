@@ -3,27 +3,41 @@
      *  NOTE: PLEASE CONSULT THE DOCUMENTATION/WIKI BEFORE USING OR CONFIGURING THIS APPLICATION.
      *  ---------------------------------------------------------------------------------
      *  Cynide v1.0 - https://github.com/jrsarath/cynide
-     *  A php class to disable, destroy, backup a php application remotely
+     *  A php class to backup, disable, destroy, erase a php application remotely
      *  Copyright © 2019, JR Sarath - Noobs Labs
      *  Apache License 2.0
      */
     class Cynide {
         /*
-         *  REQUIRED CONFIGS
+         *  APPLICATION CONFIGURATION
          *  PLEASE CONSULT DOCUMENTATION/WIKI BEFORE CONFIGURATION
          *  DOCS - https://jrsarath.github.io/cynide
          */
+            // --------------------------------------
             // APPLICATION CONFIGS
-            public $backend = 'http://localhost:8080/server.cynide.php';                   // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
-            public $app_id = 'cynide';                    // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
-            public $app_core = '';                  // ABSOLUTE PATH TO APPLICATION CORE FILE
+            // --------------------------------------
+            // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
+            public $backend = 'http://localhost:8080/server.cynide.php';
+            // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
+            public $app_id = 'cynide';
+            // ABSOLUTE PATH TO APPLICATION CORE FILE
+            public $app_core = 'test.core.php';
+            //  --------------------------------------
             // DATABASE CONFIG - OPTIONAL
-            public $db_host = 'localhost';          // DATABASE HOST, Ex. localhost
-            public $db_name = 'aio';                // DATABASE NAME
-            public $db_user = 'global';             // DATABASE USER
-            public $db_pass = 'global';             // DATABASE PASSWORD
+            // --------------------------------------
+            // DATABASE HOST, Ex. localhost
+            public $db_host = 'localhost';
+            // DATABASE NAME
+            public $db_name = 'aio';
+            // DATABASE USER
+            public $db_user = 'global';
+            // DATABASE PASSWORD
+            public $db_pass = 'global';
+            // --------------------------------------
             // OTHER CONFIGS - OPTIONAL
-            public $debug = true;                   // DEBUGGING, OPTIONS: TRUE/FALSE
+            // --------------------------------------
+            // DEBUGGING, OPTIONS: TRUE/FALSE
+            public $debug = true;
 
         public function __construct() {
             if ($db = mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name)) {
@@ -31,10 +45,13 @@
             } else {
                 $this->write_log('ERROR', '[SQL ERROR] - '.mysqli_connect_error());
             }
+            // INITIATE CYNIDE
+            $this->validate_authenticity();
         }
 
-        function init() {
-            mysqli_query('')
+        function validate_authenticity() {
+            $q = mysqli_fetch_assoc(mysqli_query($this->database,"SELECT * FROM options WHERE option_id='3'"));
+            echo($q['option_name']);
             $query = $this->backend.'?fetch-status&app-id='.base64_encode($this->app_id);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -50,6 +67,9 @@
             }
         }
 
+        function validate_license() {
+
+        }
         // DISABLE APPLICATION & SHOWS AN ERROR PAGE
         function disable_application() {
 
