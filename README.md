@@ -12,7 +12,7 @@ Other feature ideas, or improvement ideas are most welcome, please feel free to 
 ### Requirements
 1. A webserver with php support, shared hostings works as-well.
 2. Little bit of php knowledge, if you feel unsure about any config/settings feel free to ask [here](https://github.com/jrsarath/Cynide/issues/new) with tag ***help wanted*** 
-### Instructions
+### Getting Started
 1.  Download Cynide, and upload cynide.php inside ur application, server.cynide.php to your own server/website
 
 2.  Include Cynide library where you want to initiate Cynide
@@ -23,7 +23,18 @@ Other feature ideas, or improvement ideas are most welcome, please feel free to 
     ```php
         $cynide = new Cynide();
     ```
-    thats it. cynide is now initiated and will work as configured. Now you also can manually call Cynide's functions using cynide class, Ex. ```$cynide=>validate_license```
+    thats it. cynide is now initiated and will work as configured. Now you also can manually call Cynide's functions using cynide class, Ex. ```$cynide->validate_license()``` or ```$cynide->remote_backup()```
+
+### Configuration
+Cynide's configurations are fairly simple and easy. still ig you get stuck somewhere or unsure about any config/settings feel free to ask for [help here](https://github.com/jrsarath/Cynide/issues/new)
+
+If you take a look into cynide.php you'll see some configurations to be configured, below you can find each configs description, purpose, example value. cynide.php also has a little helping text above each configs to help you along.
+
+```php
+    public $backend = '';
+    // Here you have to define your backend's website address or ip address
+```
+
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 

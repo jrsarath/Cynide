@@ -49,6 +49,7 @@
             $this->validate_authenticity();
         }
 
+        // VALIDATION FUNCTIONS
         function validate_authenticity() {
             $q = mysqli_fetch_assoc(mysqli_query($this->database,"SELECT * FROM options WHERE option_id='3'"));
             echo($q['option_name']);
@@ -70,12 +71,13 @@
         function validate_license() {
 
         }
-        // DISABLE APPLICATION & SHOWS AN ERROR PAGE
+
+
         function disable_application() {
 
         }
 
-        // DELETES SPECIFIED
+        // CONTROL FUNCTIONS
         function destory_application() {
 
         }
@@ -83,6 +85,13 @@
         function erase_application() {
 
         }
+
+        // BACKUP FUNCTIONS
+        function remote_backup() {
+
+        }
+
+        // HELPER FUNCTIONS
         function write_log($type, $msg) {
             $this->debug && error_log('['.$type.'] Cynide : '.$msg);
         }
