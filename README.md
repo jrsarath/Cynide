@@ -2,6 +2,16 @@
 a PHP class to backup, disable, destroy, or completely erase PHP applications remotely in special cases.
 
 Work in progress - Please check back in while for updates, Cheers!!
+### Links
+1. [Goals](#goals)
+2. [Requirements](#requirements)
+3. [Getting Started](#getting-started)
+4. [Configuration](#configuration)
+5. [API](#api)
+6. [Support](#support)
+7. [Project Supporters](#supporters)
+7. [Disclaimer](#disclaimer)
+
 ### Goals
 1. **Backup Application Remotely**, In-case developer lost control to original host for backup
 2. **Disable Application**, In-case of an emergency developer needs to disable to application with out harming files/database.
@@ -80,7 +90,9 @@ Cynide's api usage and description
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 
-It would be great to get an cup of coffee :coffee: in return, if you found this project useful please consider donating a small amount [here](https://www.instamojo.com/@jrsarath), thanks
+It would be great to get an cup of coffee :coffee: in return, if you found this project useful please consider donating a small amount [here](https://www.instamojo.com/@jrsarath), I'll be great-full to each and every donor and will mention them here as **Project Supporter**. Thanks
+### Supporters
+In Progress
 ### Disclaimer
 Cynide neither was developed for malicious usage or was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
 
