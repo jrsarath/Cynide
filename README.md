@@ -27,11 +27,11 @@ Other feature ideas, or improvement ideas are most welcome, please feel free to 
 
 2.  Include Cynide library where you want to initiate Cynide
     ```php
-        require('path-to-cynide/cynide.php');
+    require('path-to-cynide/cynide.php');
     ```
 3.  Be creative, Cynide is self executable, just initiate it once, call initiation inside your main application or anywhere else.
     ```php
-        $cynide = new Cynide();
+    $cynide = new Cynide();
     ```
     thats it. cynide is now initiated and will work as configured. Now you also can manually call Cynide's functions using cynide class, Ex. ```$cynide->validate_license()``` or ```$cynide->remote_backup()```
 
