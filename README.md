@@ -87,6 +87,7 @@ If you take a look into cynide.php you'll see some configurations to be configur
 ### API
 Cynide's api usage and description
 1.  
+2.
 ### Support
 Cynide was developed by a developer for developers, so i'll try my best to support each one of the users, feel free to ask for [support here](https://github.com/jrsarath/Cynide/issues/new). Please include a correct tag with the issue
 
