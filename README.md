@@ -1,4 +1,4 @@
-# Cynide - The Failsafe
+# Cynide - The Guardian
 a PHP class to backup, disable, destroy, or completely erase PHP applications remotely in special cases.
 
 Work in progress - Please check back in while for updates, Cheers!!
