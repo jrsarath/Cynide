@@ -8,36 +8,38 @@
      *  Apache License 2.0
      */
     class Cynide {
-        /*
-         *  APPLICATION CONFIGURATION
-         *  PLEASE CONSULT DOCUMENTATION/WIKI BEFORE CONFIGURATION
-         *  DOCS - https://jrsarath.github.io/cynide
-         */
-            // --------------------------------------
-            // APPLICATION CONFIGS
-            // --------------------------------------
-            // DOMAIN OR IP ADDRESS, Ex. https://jrsarath.me/cynide/verifier.php
-            public $backend = 'http://localhost:8080/';
-            // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
-            public $app_id = 'cynide';
-            // ABSOLUTE PATH TO APPLICATION CORE FILE
-            public $app_core = 'test.core.php';
-            //  --------------------------------------
-            // DATABASE CONFIG - OPTIONAL
-            // --------------------------------------
-            // DATABASE HOST, Ex. localhost
-            public $db_host = 'localhost';
-            // DATABASE NAME
-            public $db_name = 'aio';
-            // DATABASE USER
-            public $db_user = 'global';
-            // DATABASE PASSWORD
-            public $db_pass = 'global';
-            // --------------------------------------
-            // OTHER CONFIGS - OPTIONAL
-            // --------------------------------------
-            // DEBUGGING, OPTIONS: TRUE/FALSE
-            public $debug = true;
+        // --------------------------------------
+        // APPLICATION CONFIGS
+        // PLEASE CONSULT DOCUMENTATION/WIKI BEFORE CONFIGURATION
+        // DOCS - https://jrsarath.github.io/cynide
+        // --------------------------------------
+
+        // DOMAIN OR IP ADDRESS OF CYNIDE'S SERVER FILE, Ex. https://jrsarath.me/cynide/
+        public $backend = 'http://localhost/cynide/';
+        // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
+        public $app_id = 'cynide';
+        // VERIFY APPLICATION LICENSE, OPTIONS: TRUE/FALSE
+        public $verify_license = false;
+        // APPLICATION'S LICENSE KEY (OPTIONAL)
+        public $app_license_key = '';
+        // ABSOLUTE PATH TO APPLICATION CORE FILE
+        public $app_core = 'test.core.php';
+        //  --------------------------------------
+        // DATABASE CONFIG - OPTIONAL
+        // --------------------------------------
+        // DATABASE HOST, Ex. localhost
+        public $db_host = 'localhost';
+        // DATABASE NAME
+        public $db_name = 'cynide';
+        // DATABASE USER
+        public $db_user = 'global';
+        // DATABASE PASSWORD
+        public $db_pass = 'global';
+        // --------------------------------------
+        // OTHER CONFIGS - OPTIONAL
+        // --------------------------------------
+        // DEBUGGING, OPTIONS: TRUE/FALSE
+        public $debug = true;
 
         public function __construct() {
             if ($db = mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name)) {
@@ -46,11 +48,11 @@
                 $this->write_log('ERROR', '[SQL ERROR] - '.mysqli_connect_error());
             }
             // INITIATE CYNIDE
-            $this->validate_authenticity();
+            $this->init();
         }
 
         // VALIDATION FUNCTIONS
-        function validate_authenticity() {
+        function init() {
             $query = $this->backend.'server.cynide.php?fetch-status&app-id='.base64_encode($this->app_id);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -60,36 +62,54 @@
             $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
             if ($http_code == '200') {
-                return $status = json_decode($result);
+                $status = json_decode($result);
+                var_dump($status);
             } else {
                 return false;
             }
         }
 
-        function validate_license() {
-
-        }
-
-
+        // CONTROL HELPERS
         function disable_application() {
 
         }
-
-        // CONTROL FUNCTIONS
         function destory_application() {
 
         }
-
         function erase_application() {
 
         }
 
-        // BACKUP FUNCTIONS
+        // BACKUP HELPERS
         function remote_backup() {
 
         }
+        function generate_chunks() {
+
+        }
+        function send_to_remote() {
+
+        }
+
+        function export_table($table) {
+            if (!file_exists('tmp')) {
+                mkdir('tmp');
+                if (!file_exists('tmp/database')) {
+                    mkdir('tmp/database');
+                }
+            }
+            $file = 'tmp/database/'.$table.'.sql';
+            // exec("mysqldump --user=$this->db_user --password='$this->db_pass' --host=$this->db_host $this->db_name > backup.sql");
+            if (!mysqli_query($this->database,"SELECT * INTO OUTFILE '$file' FROM $table")) {
+                $this->write_log('ERROR','[SQL ERROR] - '.mysqli_error($this->database));
+            }
+        }
 
         // HELPER FUNCTIONS
+        function render($template) {
+            die($template);
+        }
+
         function write_log($type, $msg) {
             $this->debug && error_log('['.$type.'] Cynide : '.$msg);
         }
