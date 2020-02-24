@@ -50,7 +50,6 @@
             // INITIATE CYNIDE
             $this->init();
         }
-
         // VALIDATION FUNCTIONS
         function init() {
             $query = $this->backend.'server.cynide.php?fetch-status&app-id='.base64_encode($this->app_id);
@@ -68,7 +67,6 @@
                 return false;
             }
         }
-
         // CONTROL HELPERS
         function disable_application() {
 
@@ -79,18 +77,45 @@
         function erase_application() {
 
         }
-
         // BACKUP HELPERS
         function remote_backup() {
 
         }
-        function generate_chunks() {
+        function generate_chunks($file,$buffer=64){
+            //open file to read
+            $file_handle = fopen($file,'r');
+            //get file size
+            $file_size = filesize($file);
+            //no of parts to split
+            $parts = $file_size / $buffer;
+            //store all the file names
+            $file_parts = array();
+            //path to write the final files
+            $store_path = "cyn-temp/";
+            //name of input file
+            $file_name = basename($file);
 
+            for($i=0;$i<$parts;$i++){
+                //read buffer sized amount from file
+                $file_part = fread($file_handle, $buffer);
+                //the filename of the part
+                $file_part_path = $store_path.$file_name.".part$i";
+                //open the new file [create it] to write
+                $file_new = fopen($file_part_path,'w+');
+                //write the part of file
+                fwrite($file_new, $file_part);
+                //add the name of the file to part list [optional]
+                array_push($file_parts, $file_part_path);
+                //close the part file handle
+                fclose($file_new);
+            }
+            //close the main file handle
+            fclose($file_handle);
+            return $file_parts;
         }
         function send_to_remote() {
 
         }
-
         function export_table($table) {
             if (!file_exists('tmp')) {
                 mkdir('tmp');
@@ -104,12 +129,10 @@
                 $this->write_log('ERROR','[SQL ERROR] - '.mysqli_error($this->database));
             }
         }
-
         // HELPER FUNCTIONS
         function render($template) {
             die($template);
         }
-
         function write_log($type, $msg) {
             $this->debug && error_log('['.$type.'] Cynide : '.$msg);
         }
