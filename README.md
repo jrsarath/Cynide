@@ -1,3 +1,4 @@
+![Cynide Logo](https://raw.githubusercontent.com/jrsarath/cynide/master/docs/cynide.png)
 # Cynide - The Guardian
 a PHP class to backup, disable, destroy, or completely erase PHP applications remotely in special cases.
 
