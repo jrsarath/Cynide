@@ -42,7 +42,7 @@ Cynide's configurations are fairly simple and easy. still ig you get stuck somew
 
 If you take a look into cynide.php you'll see some configurations to be configured, below you can find each configs description, purpose, example value. cynide.php also has a little helping text above each configs to help you along.
 
-1. ***$backend***
+1. **$backend** - (required)
     ```php
     // REQUIRED CONFIG
     // Here you have to define your backend's website address or ip address
@@ -50,7 +50,7 @@ If you take a look into cynide.php you'll see some configurations to be configur
     // Ex. http://jrsarath.me/cynide/ or http://192.168.1.50/
     public $backend = '';
     ```
-2.  ***$app_id***
+2.  **$app_id** - (required)
     ```php
     // REQUIRED CONFIG
     // Here you have to define your application id which will identify and 
@@ -59,7 +59,7 @@ If you take a look into cynide.php you'll see some configurations to be configur
     // Ex. 'CRM-563' or 'HTM-50'
     public $app_id = '';
     ```
-3.  ***$app_core***
+3.  **$app_core** - (required)
     ```php
     // REQUIRED CONFIG
     // Here you have to define absolute path to an important core/functions.php file// 
@@ -67,7 +67,7 @@ If you take a look into cynide.php you'll see some configurations to be configur
     // Ex. '/home/jrsarath/public_html/management/application/application.php' or 'application.php'
     public $app_core = '';        
     ```
-4.  ***Database Configs***
+4.  **Database Configs** - (required)
     ```php
     // Define your database server's domain or ip address
     // Ex. 'localhost'
@@ -97,7 +97,7 @@ It would be great to get an cup of coffee :coffee: in return, if you found this 
 ### Supporters
 In Progress
 ### Disclaimer
-Cynide neither was developed for malicious usage or neither was intended to use for malicious usage. Cynide is "**failsafe**" or a "**killswitch**" to prevent fraudulent activities against freelance developers.
+Cynide neither wasn't developed for malicious usage. Cynide should'be used only for educational purposes.
 
 ---
 Made with :heart: in Kolkata
