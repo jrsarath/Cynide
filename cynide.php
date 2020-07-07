@@ -107,10 +107,10 @@
         }
         function export_database() {
             $dir = __DIR__.'/tmp/database';
-            $file = $dir.'/'.time().'.sql';
             if (!file_exists($dir)) {
                 mkdir($dir, 777,true);
             }
+            $file = fopen("$dir/$this->db_name-".date('d-m-Y').".sql", "w");
 
             $this->database->set_charset('utf8');
             $tables = array();
@@ -118,6 +118,36 @@
                 while ($row = mysqli_fetch_row($result)) {
                     $tables[] = $row[0];
                 }
+                $sql_script = "";
+                foreach ($tables as $table) {
+                    if ($show_query = mysqli_query($this->database, "SHOW CREATE TABLE $table")) {
+                        $row = mysqli_fetch_row($show_query);
+                        $sql_script .= "\n\n" . $row[1] . ";\n\n";
+                        $query = "SELECT * FROM $table";
+                        $result = mysqli_query($this->database, $query);
+                        $columnCount = mysqli_num_fields($result);
+                        for ($i = 0; $i < $columnCount; $i ++) {
+                            while ($row = mysqli_fetch_row($result)) {
+                                $sql_script .= "INSERT INTO $table VALUES(";
+                                for ($j = 0; $j < $columnCount; $j ++) {
+                                    $row[$j] = $row[$j];
+                                    if (isset($row[$j])) {
+                                        $sql_script .= '"' . $row[$j] . '"';
+                                    } else {
+                                        $sql_script .= '""';
+                                    }
+                                    if ($j < ($columnCount - 1)) {
+                                        $sql_script .= ',';
+                                    }
+                                }
+                                $sql_script .= ");\n";
+                            }
+                        }
+                        $sql_script .= "\n";
+                    }
+                }
+                fwrite($file, $sql_script);
+                fclose($file);
             }
         }
 
