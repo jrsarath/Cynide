@@ -75,7 +75,7 @@ If you take a look into cynide.php you'll see some configurations to be configur
     public $db_host = '';
     
     // Define your database's name
-    // Ex. 'jrs_manage'
+    // Ex. 'my_database'
     public $db_name = '';
         
     // Define your database's username
