@@ -3,3 +3,5 @@ test.php
 error_log
 test.core.php
 tmp
+composer.json
+/vendor/
