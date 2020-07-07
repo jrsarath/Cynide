@@ -22,7 +22,7 @@ Work in progress - Please check back in while for updates, Cheers!!
 
 Other feature ideas, or improvement ideas are most welcome, please feel free to leave them **[here](https://github.com/jrsarath/Cynide/issues/new)** section along with correct tag.
 ### Requirements
-1. A webserver with php support, shared hostings works as-well.
+1. PHP 5+
 2. Little bit of php knowledge, if you feel unsure about any config/settings feel free to ask [here](https://github.com/jrsarath/Cynide/issues/new) with tag ***help wanted*** 
 ### Getting Started
 1.  Download Cynide, and upload cynide.php inside ur application, server.cynide.php to your own server/website
