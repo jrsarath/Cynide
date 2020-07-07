@@ -1,0 +1,20 @@
+{
+    "name": "jrsarath/cynide",
+    "description": "A PHP class to backup, disable, destroy, or completely erase PHP applications remotely in special cases.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jr Sarath",
+            "email": "jrsarath@outlook.com"
+        }
+    ],
+    "require": {
+		"php": ">=5.3.0"
+	},
+	"autoload": {
+		"psr-4": {
+		  "Cynide\\": "cynide"
+		}
+	}
+}
