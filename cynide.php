@@ -1,11 +1,11 @@
 <?php
     /*
-     *  NOTE: PLEASE CONSULT THE DOCUMENTATION/WIKI BEFORE USING OR CONFIGURING THIS APPLICATION.
-     *  ---------------------------------------------------------------------------------
      *  Cynide v1.0 - https://github.com/jrsarath/cynide
      *  A php class to backup, disable, destroy, erase a php application remotely
      *  Copyright © 2019, JR Sarath - Noobs Labs
      *  Apache License 2.0
+     *  ---------------------------------------------------------------------------------
+     *  NOTE: PLEASE CONSULT THE DOCUMENTATION/WIKI BEFORE USING OR CONFIGURING THIS APPLICATION.
      */
     class Cynide {
         // --------------------------------------
@@ -14,32 +14,21 @@
         // DOCS - https://jrsarath.github.io/cynide
         // --------------------------------------
 
-        // DOMAIN OR IP ADDRESS OF CYNIDE'S SERVER FILE, Ex. https://jrsarath.me/cynide/
-        public $backend = 'http://localhost/cynide/';
-        // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
-        public $app_id = 'cynide';
-        // VERIFY APPLICATION LICENSE, OPTIONS: TRUE/FALSE
-        public $verify_license = false;
-        // APPLICATION'S LICENSE KEY (OPTIONAL)
-        public $app_license_key = '';
-        // ABSOLUTE PATH TO APPLICATION CORE FILE
-        public $app_core = 'test.core.php';
-        //  --------------------------------------
+
+        public $backend = 'http://localhost/cynide/';       // DOMAIN OR IP ADDRESS OF CYNIDE'S SERVER FILE, Ex. https://jrsarath.me/cynide/
+        public $app_id = 'cynide';                          // APPLICATION ID, Ex. SCHOOL-MANAGEMENT-563
+        public $verify_license = false;                     // VERIFY APPLICATION LICENSE, OPTIONS: TRUE/FALSE
+        public $app_license_key = '';                       // APPLICATION'S LICENSE KEY (REQUIRED IF $verify_license_key = true)
+        public $app_core = 'test.core.php';                 // ABSOLUTE PATH TO APPLICATION CORE FILE
+
         // DATABASE CONFIG - OPTIONAL
-        // --------------------------------------
-        // DATABASE HOST, Ex. localhost
-        public $db_host = 'localhost';
-        // DATABASE NAME
-        public $db_name = 'cynide';
-        // DATABASE USER
-        public $db_user = 'global';
-        // DATABASE PASSWORD
-        public $db_pass = 'global';
-        // --------------------------------------
+        public $db_host = 'localhost';                       // DATABASE HOST, Ex. localhost
+        public $db_name = 'ais';                             // DATABASE NAME
+        public $db_user = 'global';                          // DATABASE USER
+        public $db_pass = 'global';                          // DATABASE PASSWORD
+
         // OTHER CONFIGS - OPTIONAL
-        // --------------------------------------
-        // DEBUGGING, OPTIONS: TRUE/FALSE
-        public $debug = true;
+        public $debug = true;                                // DEBUGGING, OPTIONS: TRUE/FALSE
 
         public function __construct() {
             if ($db = mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name)) {
@@ -116,19 +105,22 @@
         function send_to_remote() {
 
         }
-        function export_table($table) {
-            if (!file_exists('tmp')) {
-                mkdir('tmp');
-                if (!file_exists('tmp/database')) {
-                    mkdir('tmp/database');
+        function export_database() {
+            $dir = __DIR__.'/tmp/database';
+            $file = $dir.'/'.time().'.sql';
+            if (!file_exists($dir)) {
+                mkdir($dir, 777,true);
+            }
+
+            $this->database->set_charset('utf8');
+            $tables = array();
+            if ($result = mysqli_query($this->database, "SHOW TABLES")) {
+                while ($row = mysqli_fetch_row($result)) {
+                    $tables[] = $row[0];
                 }
             }
-            $file = 'tmp/database/'.$table.'.sql';
-            // exec("mysqldump --user=$this->db_user --password='$this->db_pass' --host=$this->db_host $this->db_name > backup.sql");
-            if (!mysqli_query($this->database,"SELECT * INTO OUTFILE '$file' FROM $table")) {
-                $this->write_log('ERROR','[SQL ERROR] - '.mysqli_error($this->database));
-            }
         }
+
         // HELPER FUNCTIONS
         function render($template) {
             die($template);
